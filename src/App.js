@@ -1,3 +1,4 @@
+import "./app.css";
 import { Route, Routes } from "react-router-dom";
 import AdminDashboard from "./Components/AdminDashboard/AdminDashboard";
 import NoMatch from "./Components/NoMatch";
@@ -8,7 +9,6 @@ import Home from "./Components/Home";
 import AboutUs from "./Components/AboutUs";
 import Services from "./Components/Services";
 import Contact from "./Components/ContactUs";
-import "./app.css";
 
 const App = () => {
   return (
