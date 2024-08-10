@@ -10,7 +10,8 @@ import {
   FormWrapper,
   Container,
   BackButton,
-} from "./Login-styled.js";
+} from "./Login.styled.js";
+// import "./loginPage.css";
 
 const LOGIN_URL = "http://localhost:5000/api/admin/login";
 
@@ -60,35 +61,48 @@ const LoginPage = () => {
   };
 
   return (
-    <Container>
-      <BackButton onClick={() => navigate("/")}>Back to Home</BackButton>
-      <FormWrapper>
-        <Title>Admin Login</Title>
-        <form onSubmit={handleSubmit}>
-          <Input
-            type="email"
-            placeholder="Email"
-            value={email}
-            autoComplete="email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Button type="submit" disabled={isLoading}>
-            Login
-          </Button>
-        </form>
-        {error && <p>{errorMsg}</p>}
-        {isLoading && <p>Loading</p>}
-      </FormWrapper>
-    </Container>
+    <>
+      <Container>
+        <BackButton onClick={() => navigate("/")}>Back to Home</BackButton>
+        <FormWrapper>
+          <Title>Admin Login</Title>
+          <form onSubmit={handleSubmit}>
+            <Input
+              type="email"
+              placeholder="Email"
+              value={email}
+              autoComplete="email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <Input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <Button type="submit" disabled={isLoading}>
+              Login
+            </Button>
+          </form>
+          {error && <p>{errorMsg}</p>}
+          {isLoading && <p>Loading</p>}
+        </FormWrapper>
+      </Container>
+    </>
   );
 };
 
 export default LoginPage;
+
+// return (
+//   <>
+//     <div className="login_container">
+//       <button className="login_back_button" onClick={() => navigate("/")}>
+//         Back to Home
+//       </button>
+//       <form className="login-form"></form>
+//     </div>
+//   </>
+// );
