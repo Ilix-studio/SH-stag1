@@ -2,7 +2,6 @@ import React from "react";
 import "./Footer.css";
 
 import { Link } from "react-router-dom";
-import SHlogo from "./../../../src/assets/shlogo-white.png";
 
 const Footer = () => {
   const quicklinks = ["Home", "About Us", "Services", "Contact Us"];

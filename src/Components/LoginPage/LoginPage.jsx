@@ -3,15 +3,7 @@ import useAuth from "../../hooks/useAuth.js";
 import { useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import {
-  Button,
-  Input,
-  Title,
-  FormWrapper,
-  Container,
-  BackButton,
-} from "./Login.styled.js";
-// import "./loginPage.css";
+import "./loginPage.css";
 
 const LOGIN_URL = "http://localhost:5000/api/admin/login";
 
@@ -62,12 +54,15 @@ const LoginPage = () => {
 
   return (
     <>
-      <Container>
-        <BackButton onClick={() => navigate("/")}>Back to Home</BackButton>
-        <FormWrapper>
-          <Title>Admin Login</Title>
+      <div className="login_container">
+        <button className="login_back_btn" onClick={() => navigate("/")}>
+          Back to Home
+        </button>
+        <div className="login-form">
+          <h2 className="login-form_title">Admin Login</h2>
           <form onSubmit={handleSubmit}>
-            <Input
+            <input
+              className="login-form_input"
               type="email"
               placeholder="Email"
               value={email}
@@ -75,34 +70,27 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <Input
+            <input
+              className="login-form_input"
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <Button type="submit" disabled={isLoading}>
-              Login
-            </Button>
+            <button
+              className="login-submit-btn"
+              type="submit"
+              disabled={isLoading}
+            >
+              Submit
+            </button>
           </form>
           {error && <p>{errorMsg}</p>}
           {isLoading && <p>Loading</p>}
-        </FormWrapper>
-      </Container>
+        </div>
+      </div>
     </>
   );
 };
-
 export default LoginPage;
-
-// return (
-//   <>
-//     <div className="login_container">
-//       <button className="login_back_button" onClick={() => navigate("/")}>
-//         Back to Home
-//       </button>
-//       <form className="login-form"></form>
-//     </div>
-//   </>
-// );
