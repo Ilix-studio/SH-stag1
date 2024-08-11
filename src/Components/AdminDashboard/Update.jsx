@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import toast from "react-hot-toast";
 import useAxiosInterceptor from "../../hooks/useAxiosInterceptor";
-import { EditDeleteButton} from './Dashboard-styled';
+import { EditDeleteButton } from "./Dashboard-styled";
 
 const timeOptions = [
   { value: "10:00-11:00", label: "10:00 - 11:00" },
@@ -27,18 +27,22 @@ const Update = ({ appointmentId, refetch }) => {
   useEffect(() => {
     const fetchAppointment = async () => {
       try {
-        const { data } = await axiosPrivate.get(`http://localhost:5000/api/form/view/${appointmentId}`);
+        const { data } = await axiosPrivate.get(
+          `https://sultan-hospital-backend-api.onrender.com/api/form/view/${appointmentId}`
+        );
         setFormValues({
           patientName: data.patientName,
           phoneNumber: data.phoneNumber,
           timeSchedule: data.timeSchedule,
-          date: new Date(data.date).toISOString().split('T')[0],
+          date: new Date(data.date).toISOString().split("T")[0],
         });
       } catch (error) {
-        toast.error(`Error fetching appointment: ${error.response?.data?.message || error.message}`);
+        toast.error(
+          `Error fetching appointment: ${error.response?.data?.message || error.message}`
+        );
       }
     };
-    
+
     if (appointmentId) {
       fetchAppointment();
     }
@@ -46,16 +50,19 @@ const Update = ({ appointmentId, refetch }) => {
 
   const updateMutation = useMutation(
     async () => {
-      await axiosPrivate.put(`http://localhost:5000/api/form/update/${appointmentId}`, formValues);
+      await axiosPrivate.put(
+        `https://sultan-hospital-backend-api.onrender.com/api/form/update/${appointmentId}`,
+        formValues
+      );
     },
     {
       onSuccess: () => {
         toast.success("Appointment updated successfully", {
           duration: 2000,
           style: {
-            fontSize: '18px',
-            minWidth: '350px'
-          }
+            fontSize: "18px",
+            minWidth: "350px",
+          },
         });
         queryClient.invalidateQueries("totalAppointments");
         queryClient.invalidateQueries("todaysAppointments");
@@ -63,14 +70,17 @@ const Update = ({ appointmentId, refetch }) => {
         setShowForm(false);
       },
       onError: (error) => {
-        toast.error(`Error: ${error.response?.data?.message || error.message}`, {
-          duration: 2000,
-          style: {
-            fontSize: '18px',
-            minWidth: '350px'
+        toast.error(
+          `Error: ${error.response?.data?.message || error.message}`,
+          {
+            duration: 2000,
+            style: {
+              fontSize: "18px",
+              minWidth: "350px",
+            },
           }
-        });
-      }
+        );
+      },
     }
   );
 
@@ -86,7 +96,9 @@ const Update = ({ appointmentId, refetch }) => {
 
   return (
     <div>
-      <EditDeleteButton onClick={() => setShowForm(true)}>Edit</EditDeleteButton>
+      <EditDeleteButton onClick={() => setShowForm(true)}>
+        Edit
+      </EditDeleteButton>
       {showForm && (
         <div>
           <form onSubmit={handleSubmit}>
@@ -106,7 +118,6 @@ const Update = ({ appointmentId, refetch }) => {
               value={formValues.phoneNumber}
               onChange={handleChange}
               maxLength="10"
-              
             />
             <label htmlFor="timeSchedule">Time Schedule:</label>
             <select
@@ -116,7 +127,7 @@ const Update = ({ appointmentId, refetch }) => {
               onChange={handleChange}
             >
               <option value="">Select time</option>
-              {timeOptions.map(option => (
+              {timeOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -131,7 +142,9 @@ const Update = ({ appointmentId, refetch }) => {
               onChange={handleChange}
             />
             <EditDeleteButton type="submit">Update</EditDeleteButton>
-            <EditDeleteButton type="button" onClick={() => setShowForm(false)}>Cancel</EditDeleteButton>
+            <EditDeleteButton type="button" onClick={() => setShowForm(false)}>
+              Cancel
+            </EditDeleteButton>
           </form>
         </div>
       )}
@@ -139,4 +152,4 @@ const Update = ({ appointmentId, refetch }) => {
   );
 };
 
-export default Update
+export default Update;

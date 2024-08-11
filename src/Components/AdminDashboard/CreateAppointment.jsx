@@ -145,7 +145,10 @@ const CreateAppointment = () => {
 
   const mutation = useMutation(
     (newAppointment) =>
-      axios.post("http://localhost:5000/api/form/create", newAppointment),
+      axios.post(
+        "https://sultan-hospital-backend-api.onrender.com/api/form/create",
+        newAppointment
+      ),
     {
       onSuccess: () => {
         toast.success("Appointment created successfully!", {

@@ -1,3 +1,6 @@
+// CONTROL + F KEYWORDS FOR SEARCH
+//lOGIN
+
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`

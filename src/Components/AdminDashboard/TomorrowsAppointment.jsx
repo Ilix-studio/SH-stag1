@@ -11,12 +11,15 @@ const TomorrowsAppointment = () => {
 
   const fetchAppointments = async () => {
     const { data } = await axiosPrivate.get(
-      "http://localhost:5000/api/form/tomorrows-appointments"
+      "https://sultan-hospital-backend-api.onrender.com/api/form/tomorrows-appointments"
     );
     return data;
   };
 
-  const { data, error, isLoading, refetch } = useQuery("appointments", fetchAppointments);
+  const { data, error, isLoading, refetch } = useQuery(
+    "appointments",
+    fetchAppointments
+  );
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -59,8 +62,8 @@ const TomorrowsAppointment = () => {
                 <Td>{appointment.timeSchedule}</Td>
                 <Td>{formatDate(appointment.date)}</Td>
                 <Td>
-                <Update appointmentId={appointment._id} refetch={refetch} />
-                <Delete appointmentId={appointment._id} refetch={refetch} />
+                  <Update appointmentId={appointment._id} refetch={refetch} />
+                  <Delete appointmentId={appointment._id} refetch={refetch} />
                 </Td>
               </tr>
             ))}
@@ -72,5 +75,3 @@ const TomorrowsAppointment = () => {
 };
 
 export default TomorrowsAppointment;
-
-

@@ -23,7 +23,7 @@ import axios from "axios";
 const fetchTodaysAppointments = async (axiosPrivate) => {
   try {
     const response = await axiosPrivate.get(
-      "http://localhost:5000/api/form/todays-appointments"
+      "https://sultan-hospital-backend-api.onrender.com/api/form/todays-appointments"
     );
     return response.data;
   } catch (error) {
@@ -34,7 +34,7 @@ const fetchTodaysAppointments = async (axiosPrivate) => {
 const fetchTotalAppointments = async (axiosPrivate) => {
   try {
     const response = await axiosPrivate.get(
-      "http://localhost:5000/api/form/view"
+      "https://sultan-hospital-backend-api.onrender.com/api/form/view"
     );
     return response.data;
   } catch (error) {
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
     const checkAuth = async () => {
       try {
         await axiosPrivate.get(
-          "http://localhost:5000/api/admin/adminDashboard"
+          "https://sultan-hospital-backend-api.onrender.com/api/admin/adminDashboard"
         );
       } catch (error) {
         if (error.response?.status === 401) {
@@ -85,7 +85,7 @@ const AdminDashboard = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/admin/logout",
+        "https://sultan-hospital-backend-api.onrender.com/api/admin/logout",
         {},
         { withCredentials: true }
       );

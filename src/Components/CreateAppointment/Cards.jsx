@@ -1,47 +1,48 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import './Cardsstyle.css' // Import your CSS file
+import React, { useState } from "react";
+import axios from "axios";
+import "./Cardsstyle.css"; // Import your CSS file
 
-import { useMutation } from 'react-query'
-import toast from 'react-hot-toast'
-import { Toaster } from 'react-hot-toast'
+import { useMutation } from "react-query";
+import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
-const AppointEndpoint = 'http://localhost:5000/api/form/create'
+const AppointEndpoint =
+  "https://sultan-hospital-backend-api.onrender.com/api/form/create";
 
 const form = async ({ patientName, phoneNumber }) => {
   const response = await axios.post(
     AppointEndpoint,
     JSON.stringify({ patientName, phoneNumber }),
     {
-      headers: { 'Content-Type': 'application/json' },
-    },
-  )
-  return response.data
-}
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+  return response.data;
+};
 
 const InputContainer = () => {
-  const [patientName, setPatientName] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [errorMsg, setError] = useState('')
+  const [patientName, setPatientName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [errorMsg, setError] = useState("");
 
   const { mutate, isLoading, error } = useMutation(form, {
     onSuccess: (data) => {
-      setPatientName('')
-      setPhoneNumber('')
-      toast.success('Appointment created successfully')
+      setPatientName("");
+      setPhoneNumber("");
+      toast.success("Appointment created successfully");
     },
     onError: (error) => {
       if (!error.response) {
-        setError('No Server Response')
+        setError("No Server Response");
       } else if (error.response?.status === 400) {
-        toast.error('Something is wrong')
+        toast.error("Something is wrong");
       }
     },
-  })
+  });
   const handleSubmit = (e) => {
-    e.preventDefault()
-    mutate({ patientName, phoneNumber })
-  }
+    e.preventDefault();
+    mutate({ patientName, phoneNumber });
+  };
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -57,7 +58,7 @@ const InputContainer = () => {
               />
               <label
                 htmlFor="input"
-                className={`label ${patientName && 'filled'}`}
+                className={`label ${patientName && "filled"}`}
               >
                 Patient Name
               </label>
@@ -73,7 +74,7 @@ const InputContainer = () => {
               />
               <label
                 htmlFor="input"
-                className={`label ${phoneNumber && 'filled'}`}
+                className={`label ${phoneNumber && "filled"}`}
               >
                 Your Phone Number
               </label>
@@ -138,7 +139,7 @@ const InputContainer = () => {
       {mutate.isLoading && <p>Loading</p>}
       <Toaster position="top-center" reverseOrder={false} />
     </>
-  )
-}
+  );
+};
 
-export default InputContainer
+export default InputContainer;

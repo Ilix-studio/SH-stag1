@@ -5,7 +5,8 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 // import "./loginPage.css";
 
-const LOGIN_URL = "http://localhost:5000/api/admin/login";
+const LOGIN_URL =
+  "https://sultan-hospital-backend-api.onrender.com/api/admin/login";
 
 const login = async ({ email, password }) => {
   const response = await axios.post(
