@@ -1,6 +1,7 @@
 // CONTROL + F KEYWORDS FOR SEARCH
 //lOGIN
 //DASH
+//CREATE-FORM
 
 import { createGlobalStyle } from "styled-components";
 
@@ -250,6 +251,76 @@ const GlobalStyles = createGlobalStyle`
 }
 .card__description > b {
   font-weight: 700;
+}
+//CREATE-FORM
+.create-apt__back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+.create-apt__back-btn:hover {
+  background-color: #2c3e50;
+  color: white;
+  box-shadow: 1px 3px 5px #34495e;
+  border: 1px solid #2c3e50;
+}
+@media (max-width: 480px) {
+  .create-apt__back-btn {
+    top: 10px;
+    left: 10px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}
+
+.create-apt__form {
+  border-radius: 20px;
+  box-shadow:
+    0 4px 4px rgba(0, 0, 0, 0.25),
+    0 4px 4px rgba(0, 0, 0, 0.25),
+    2px 4px 8px #fff;
+  border: 1px solid #ce4141;
+  background-color: #fff;
+  display: flex;
+  max-width: 400px; /* Increase the width */
+  flex-direction: column;
+  font-size: 16px; /* Increase the font size */
+  color: #000;
+  font-weight: 400;
+  padding: 30px 60px; /* Increase the padding */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.create-apt__submit-btn {
+  text-shadow: 0 3px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  box-shadow:
+    0 4px 4px rgba(0, 0, 0, 0.25),
+    0 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #ce4141;
+  align-self: center;
+  margin-top: 30px; /* Increase the margin */
+  color: #fff;
+  justify-content: center;
+  padding: 12px 18px; /* Increase the padding */
+  font:
+    600 16px Open Sans,
+    sans-serif; /* Increase the font size */
+  border: none;
+  cursor: pointer;
 }
 
 `;
