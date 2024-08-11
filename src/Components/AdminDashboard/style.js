@@ -79,30 +79,6 @@ export const SubmitButtonStyled = styled.button`
   cursor: pointer;
 `;
 
-export const SelectStyled = styled.select`
-  font-family:
-    Open Sans,
-    sans-serif;
-  flex-grow: 1;
-  flex-basis: auto;
-  margin: auto 0 24px 0; /* Add bottom margin to increase spacing */
-  padding: 8px;
-  font-size: 16px;
-  border: none;
-  border-bottom: 2px solid #000000; /* Add a bottom border only */
-  outline: none; /* Remove the default outline on focus */
-  max-width: 210px;
-
-  &:focus {
-    border-bottom-color: #ce4141; /* Change bottom border color on focus */
-  }
-`;
-
-export const OptionStyled = styled.option`
-  color: #000;
-  padding: 8px;
-`;
-
 export const CustomDatePicker = styled(DatePicker)`
   font-family:
     Open Sans,

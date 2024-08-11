@@ -1,13 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  InputGroupStyled,
-  IconStyled,
-  InputLabelStyled,
-  SelectStyled,
-  OptionStyled,
-  CustomDatePicker,
-  ErrorMessageStyled,
-} from "./style";
+import DatePicker from "react-datepicker";
 
 const InputGroup = ({
   icon,
@@ -55,10 +47,11 @@ const InputGroup = ({
   };
   return (
     <>
-      <InputGroupStyled>
-        <IconStyled src={icon} alt="" />
+      <div className="create-apt__inputGroup">
+        <img src={icon} alt="" />
         {type === "select" ? (
-          <SelectStyled
+          <select
+            className="inputGroup-select"
             id={id}
             aria-label={label}
             required
@@ -69,13 +62,18 @@ const InputGroup = ({
               {label}
             </option>
             {options.map((option, index) => (
-              <OptionStyled key={index} value={option.value}>
+              <option
+                className="inputGroup-option"
+                key={index}
+                value={option.value}
+              >
                 {option.label}
-              </OptionStyled>
+              </option>
             ))}
-          </SelectStyled>
+          </select>
         ) : isDate ? (
-          <CustomDatePicker
+          <DatePicker
+            className="inputGroup-datePicker"
             selected={value}
             onChange={handleDateChange}
             dateFormat="dd-MM-yyyy"
@@ -83,7 +81,8 @@ const InputGroup = ({
             required
           />
         ) : type === "tel" ? (
-          <InputLabelStyled
+          <input
+            className="inputGroup-labelStyle"
             type={type}
             id={id}
             placeholder={label}
@@ -94,21 +93,22 @@ const InputGroup = ({
             required
           />
         ) : (
-          <InputLabelStyled
+          <input
+            className="inputGroup-labelStyle"
             type={type}
             id={id}
             placeholder={label}
             aria-label={label}
             value={value}
-            onChange={handleInputChange}
+            onChange={handlePhoneChange}
             required
           />
         )}
-      </InputGroupStyled>
+      </div>
       {type === "tel" && !isPhoneValid && isTouched && (
-        <ErrorMessageStyled>
+        <div className="inputGroup-errMsg">
           Please enter a 10 digit number starting with 9, 8, 7, or 6
-        </ErrorMessageStyled>
+        </div>
       )}
     </>
   );
