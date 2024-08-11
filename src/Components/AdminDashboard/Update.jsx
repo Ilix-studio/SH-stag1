@@ -95,12 +95,12 @@ const Update = ({ appointmentId, refetch }) => {
 
   return (
     <>
-      <div
+      <button
         className="form-container__edit-btn"
         onClick={() => setShowForm(true)}
       >
         Edit
-      </div>
+      </button>
       {showForm && (
         <div>
           <form onSubmit={handleSubmit}>

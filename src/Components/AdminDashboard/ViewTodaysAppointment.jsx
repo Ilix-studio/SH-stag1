@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, TableContainer, Table, Th, Td } from "./Dashboard-styled";
 import { useQuery } from "react-query";
 import Update from "./Update";
 import Delete from "./Delete";
@@ -36,41 +35,43 @@ const ViewTodaysAppointment = () => {
       return "";
     }
   };
-
+  //tommorrowAppoint && TotalAppointment && ViewTodays-Apt === same UI
   return (
-    <Container>
-      <Toaster />
-      <TableContainer>
-        <h2>TODAY'S APPOINTMENTS</h2>
-        <Table>
-          <thead>
-            <tr>
-              <Th>S.No.</Th>
-              <Th>Name</Th>
-              <Th>Phone Number</Th>
-              <Th>Time Schedule</Th>
-              <Th>Date</Th>
-              <Th>Actions</Th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((appointment, index) => (
-              <tr key={appointment._id}>
-                <Td>{index + 1}</Td>
-                <Td>{appointment.patientName}</Td>
-                <Td>{appointment.phoneNumber}</Td>
-                <Td>{appointment.timeSchedule}</Td>
-                <Td>{formatDate(appointment.date)}</Td>
-                <Td>
-                  <Update appointmentId={appointment._id} refetch={refetch} />
-                  <Delete appointmentId={appointment._id} refetch={refetch} />
-                </Td>
+    <>
+      <div className="tomorrow-apt__container">
+        <Toaster />
+        <div className="table-container">
+          <h2>Today'S Appointments</h2>
+          <table className="table-look">
+            <thead>
+              <tr>
+                <th className="th-column">S.No.</th>
+                <th className="th-column">Name</th>
+                <th className="th-column">Phone Number</th>
+                <th className="th-column">Time Schedule</th>
+                <th className="th-column">Date</th>
+                <th className="th-column">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
-      </TableContainer>
-    </Container>
+            </thead>
+            <tbody>
+              {data.map((appointment, index) => (
+                <tr key={appointment._id}>
+                  <td className="td-row">{index + 1}</td>
+                  <td className="td-row">{appointment.patientName}</td>
+                  <td className="td-row">{appointment.phoneNumber}</td>
+                  <td className="td-row">{appointment.timeSchedule}</td>
+                  <td className="td-row">{formatDate(appointment.date)}</td>
+                  <td className="td-row">
+                    <Update appointmentId={appointment._id} refetch={refetch} />
+                    <Delete appointmentId={appointment._id} refetch={refetch} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
 };
 
