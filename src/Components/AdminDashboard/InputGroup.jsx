@@ -50,7 +50,7 @@ const InputGroup = ({
       <div className="create-apt__inputGroup">
         <img src={icon} alt="" />
         {type === "select" ? (
-          <select
+          <input
             className="inputGroup-select"
             id={id}
             aria-label={label}
@@ -70,7 +70,7 @@ const InputGroup = ({
                 {option.label}
               </option>
             ))}
-          </select>
+          </input>
         ) : isDate ? (
           <DatePicker
             className="inputGroup-datePicker"
