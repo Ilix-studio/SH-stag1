@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
 import useAxiosInterceptor from "../../hooks/useAxiosInterceptor";
 import toast from "react-hot-toast";
-import { EditDeleteButton } from "./Dashboard-styled";
 
 const Delete = ({ appointmentId, refetch }) => {
   const { axiosPrivate } = useAxiosInterceptor();
@@ -42,17 +41,20 @@ const Delete = ({ appointmentId, refetch }) => {
   );
 
   return (
-    <EditDeleteButton
-      onClick={() => {
-        if (
-          window.confirm("Are you sure you want to delete this appointment?")
-        ) {
-          mutation.mutate();
-        }
-      }}
-    >
-      Delete
-    </EditDeleteButton>
+    <>
+      <button
+        className="form-container_delete-btn"
+        onClick={() => {
+          if (
+            window.confirm("Are you sure you want to delete this appointment?")
+          ) {
+            mutation.mutate();
+          }
+        }}
+      >
+        Delete
+      </button>
+    </>
   );
 };
 

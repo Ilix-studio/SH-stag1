@@ -2,6 +2,8 @@
 //lOGIN
 //DASH
 //CREATE-FORM
+//InputGroup
+//formContainer-delete_btn
 
 import { createGlobalStyle } from "styled-components";
 
@@ -392,6 +394,36 @@ const GlobalStyles = createGlobalStyle`
   margin-left: 60px;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+//formContainer-delete_btn
+.form-container_delete-btn {
+  top: 20px;
+  left: 20px;
+  padding: 0.2rem 0.6rem;
+  background-color: transparent;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+.form-container_delete-btn:hover {
+  background-color: #2c3e50;
+  color: white;
+  box-shadow: 1px 3px 5px #34495e;
+  border: 1px solid #2c3e50;
+}
+@media (max-width: 480px) {
+  .form-container_delete-btn {
+    top: 10px;
+    left: 10px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
 }
 
 `;
