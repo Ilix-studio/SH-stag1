@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import toast from "react-hot-toast";
 import useAxiosInterceptor from "../../hooks/useAxiosInterceptor";
-import { EditDeleteButton } from "./Dashboard-styled";
 
 const timeOptions = [
   { value: "10:00-11:00", label: "10:00 - 11:00" },
@@ -95,10 +94,13 @@ const Update = ({ appointmentId, refetch }) => {
   };
 
   return (
-    <div>
-      <EditDeleteButton onClick={() => setShowForm(true)}>
+    <>
+      <div
+        className="form-container__edit-btn"
+        onClick={() => setShowForm(true)}
+      >
         Edit
-      </EditDeleteButton>
+      </div>
       {showForm && (
         <div>
           <form onSubmit={handleSubmit}>
@@ -141,14 +143,20 @@ const Update = ({ appointmentId, refetch }) => {
               value={formValues.date}
               onChange={handleChange}
             />
-            <EditDeleteButton type="submit">Update</EditDeleteButton>
-            <EditDeleteButton type="button" onClick={() => setShowForm(false)}>
+            <div className="form-container__edit-btn" type="submit">
+              Update
+            </div>
+            <div
+              className="form-container__edit-btn"
+              type="button"
+              onClick={() => setShowForm(false)}
+            >
               Cancel
-            </EditDeleteButton>
+            </div>
           </form>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

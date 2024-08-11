@@ -34,7 +34,7 @@ const TomorrowsAppointment = () => {
       return "";
     }
   };
-
+  //tommorrowAppoint && TotalAppointment === same UI
   return (
     <>
       <div className="tomorrow-apt__container">
@@ -57,6 +57,7 @@ const TomorrowsAppointment = () => {
                 <tr key={appointment._id}>
                   <td className="td-row">{index + 1}</td>
                   <td className="td-row">{appointment.patientName}</td>
+                  <td className="td-row">{appointment.phoneNumber}</td>
                   <td className="td-row">{appointment.timeSchedule}</td>
                   <td className="td-row">{formatDate(appointment.date)}</td>
                   <td className="td-row">
