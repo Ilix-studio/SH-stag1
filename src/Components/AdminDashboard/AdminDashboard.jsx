@@ -106,7 +106,7 @@ const AdminDashboard = () => {
           </div>
         </main>
         <div className="dashboard-card-container">
-          <div className="card" onClick={() => setView("todays")}>
+          <div className="dash_card" onClick={() => setView("todays")}>
             <div className="card__content">
               <div className="card__count">{todaysAppointmentsCount}</div>
             </div>
@@ -114,7 +114,7 @@ const AdminDashboard = () => {
               <b>Appointments Today</b>{" "}
             </div>
           </div>
-          <div className="card" onClick={() => setView("tomorrows")}>
+          <div className="dash_card" onClick={() => setView("tomorrows")}>
             <div className="card__content">
               <div className="card__count">View</div>
             </div>
@@ -122,7 +122,7 @@ const AdminDashboard = () => {
               <b>Tomorrow's Appointments</b>{" "}
             </div>
           </div>
-          <div className="card" onClick={() => setView("total")}>
+          <div className="dash_card" onClick={() => setView("total")}>
             <div className="card__content">
               <div className="card__count">{totalAppointmentsCount}</div>
             </div>
@@ -130,7 +130,7 @@ const AdminDashboard = () => {
               <b>Total Appointments</b>{" "}
             </div>
           </div>
-          <div className="card" onClick={() => navigate("/create")}>
+          <div className="dash_card" onClick={() => navigate("/create")}>
             <div className="card__content">
               <div className="card__count">Create</div>
             </div>

@@ -206,7 +206,7 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
   }
 }
-.card {
+.dash_card {
   width: 100%;
   max-width: 270px;
   height: 100px;
@@ -222,7 +222,7 @@ const GlobalStyles = createGlobalStyle`
   position: relative;
   box-shadow: 2px solid #bad7e9;
 }
-.card:hover {
+.dash_card:hover {
   background: #1a252f;
   box-shadow: 1px 3px 5px #34495e;
 }
