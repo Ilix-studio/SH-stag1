@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useNavigate, Outlet } from "react-router-dom";
-import {
-  Container,
-  Header,
-  Logo,
-  LogoutButton,
-  Main,
-  CardContainer,
-  Card,
-  CardContent,
-  Count,
-  Description,
-} from "./Dashboard-styled";
 import useAxiosInterceptor from "../../hooks/useAxiosInterceptor";
 import TotalAppointments from "./TotalAppointments";
 import ViewTodaysAppointment from "./ViewTodaysAppointment";
@@ -99,49 +87,59 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <Container>
-        <Header>
-          <Logo>
+      <section className="dashboard-container">
+        <header className="dashboard-header">
+          <div className="dashboard-logo">
             <img
               src="https://i.ibb.co/pPRBdMz/shrc-logo-new.png"
               alt="Sultan Hospital Logo"
             />
             <h1>Sultan Hospital</h1>
-          </Logo>
-          <LogoutButton onClick={handleLogout}>Log out</LogoutButton>
-        </Header>
-        <Main>
+          </div>
+          <div className="dashboard-logout_btn" onClick={handleLogout}>
+            Logout
+          </div>
+        </header>
+        <main className="dashboard-main">
           <div className="welcome-message">
             <h2>Welcome Admin!</h2>
           </div>
-        </Main>
-        <CardContainer>
-          <Card onClick={() => setView("todays")}>
-            <CardContent>
-              <Count>{todaysAppointmentsCount}</Count>
-            </CardContent>
-            <Description>Appointments Today</Description>
-          </Card>
-          <Card onClick={() => setView("tomorrows")}>
-            <CardContent>
-              <Count>View</Count>
-            </CardContent>
-            <Description>Tomorrow's Appointments</Description>
-          </Card>
-          <Card onClick={() => setView("total")}>
-            <CardContent>
-              <Count>{totalAppointmentsCount}</Count>
-            </CardContent>
-            <Description>Total Appointments</Description>
-          </Card>
-          <Card onClick={() => navigate("/create")}>
-            <CardContent>
-              <Count>Create</Count>
-            </CardContent>
-            <Description>Appointment</Description>
-          </Card>
-        </CardContainer>
-      </Container>
+        </main>
+        <div className="dashboard-card-container">
+          <div className="card" onClick={() => setView("todays")}>
+            <div className="card__content">
+              <div className="card__count">{todaysAppointmentsCount}</div>
+            </div>
+            <div className="card__description">
+              <b>Appointments Today</b>{" "}
+            </div>
+          </div>
+          <div className="card" onClick={() => setView("tomorrows")}>
+            <div className="card__content">
+              <div className="card__count">View</div>
+            </div>
+            <div className="card__description">
+              <b>Tomorrow's Appointments</b>{" "}
+            </div>
+          </div>
+          <div className="card" onClick={() => setView("total")}>
+            <div className="card__content">
+              <div className="card__count">{totalAppointmentsCount}</div>
+            </div>
+            <div className="card__description">
+              <b>Total Appointments</b>{" "}
+            </div>
+          </div>
+          <div className="card" onClick={() => navigate("/create")}>
+            <div className="card__content">
+              <div className="card__count">Create</div>
+            </div>
+            <div className="card__description">
+              <b>Appointment</b>{" "}
+            </div>
+          </div>
+        </div>
+      </section>
       {view === "total" && <TotalAppointments />}
       {view === "todays" && <ViewTodaysAppointment />}
       {view === "tomorrows" && <TomorrowsAppointment />}
@@ -149,5 +147,4 @@ const AdminDashboard = () => {
     </>
   );
 };
-
 export default AdminDashboard;

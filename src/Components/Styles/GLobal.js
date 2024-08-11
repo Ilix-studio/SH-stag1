@@ -1,5 +1,6 @@
 // CONTROL + F KEYWORDS FOR SEARCH
 //lOGIN
+//DASH
 
 import { createGlobalStyle } from "styled-components";
 
@@ -129,6 +130,126 @@ const GlobalStyles = createGlobalStyle`
 .login-submit-btn:disabled {
   background: #bdc3c7;
   cursor: not-allowed;
+}
+//DASH
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto -40px;
+  padding: 20px;
+}
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 24px;
+}
+.dashboard-logo {
+  display: flex;
+  align-items: center;
+}
+.dashboard-logo > h1 {
+  font-size: 1.2rem;
+  color: #333;
+}
+.dashboard-logo > img {
+  width: 55px;
+  height: 50px;
+}
+.dashboard-logout_btn {
+  top: 20px;
+  left: 20px;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+.dashboard-logout_btn:hover {
+  background-color: #2c3e50;
+  color: white;
+  box-shadow: 1px 3px 5px #34495e;
+  border: 1px solid #2c3e50;
+}
+
+@media (max-width: 480px) {
+  .dashboard-logout_btn {
+    top: 10px;
+    left: 10px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}
+.dashboard-main .welcome-message > h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* ====== cards ===== */
+
+.dashboard-card-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .dashboard-card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.card {
+  width: 100%;
+  max-width: 270px;
+  height: 100px;
+  padding: 24px;
+  background: #2c3e50;
+  color: #bad7e9;
+  border-radius: 12px;
+  overflow: hidden;
+  border-top: 1px solid rgb(2, 2, 2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-shadow: 2px solid #bad7e9;
+}
+.card:hover {
+  background: #1a252f;
+  box-shadow: 1px 3px 5px #34495e;
+}
+.card__content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.card__count {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0.15px;
+  word-wrap: break-word;
+  color: white;
+}
+.card__description {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  word-wrap: break-word;
+  z-index: 1;
+  color: white;
+}
+.card__description > b {
+  font-weight: 700;
 }
 
 `;
