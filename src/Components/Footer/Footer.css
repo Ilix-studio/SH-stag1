@@ -65,6 +65,10 @@
 .bytesizedsolutions {
   font-weight: bold;
 }
+.link {
+  color: #dcf2f1;
+  text-decoration: none;
+}
 
 /* Media Queries */
 

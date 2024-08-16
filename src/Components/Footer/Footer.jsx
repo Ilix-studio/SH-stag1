@@ -48,9 +48,14 @@ const Footer = () => {
           <div className="footer2">
             <div className="line"></div>
             <h3 className="bottom-text">
-              © Copyright, 2024 Sultan Hospital - All Rights Reserved |
-              Developed by
-              <span className="bytesizedsolutions"> ByteSizedSolutions 💖</span>
+              {" "}
+              © Copyright, 2024 Sultan Hospital - All Rights Reserved Developed
+              by
+              <span className="bytesizedsolutions">
+                <Link to="https://www.bytesizedsolutions.in/" className="link">
+                  , ByteSizedSolutions 💖
+                </Link>
+              </span>
             </h3>
           </div>
         </div>
